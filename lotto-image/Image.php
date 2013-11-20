@@ -21,7 +21,7 @@ class Image {
     /**
      * @var array
      */
-    private $numbers     = [];
+    private $numbers     = array();
 
     /**
      * @param array $numbers
@@ -78,15 +78,15 @@ class Image {
 
     private function getGrid()
     {
-        return [
-            ['x' => 51, 'y' => 58],
-            ['x' => 117, 'y' => 58],
-            ['x' => 183, 'y' => 58],
-            ['x' => 250, 'y' => 58],
-            ['x' => 315, 'y' => 58],
-            ['x' => 381, 'y' => 58],
-            ['x' => 448, 'y' => 58],
-        ];
+        return array(
+            array('x' => 51, 'y' => 58),
+            array('x' => 117, 'y' => 58),
+            array('x' => 183, 'y' => 58),
+            array('x' => 250, 'y' => 58),
+            array('x' => 315, 'y' => 58),
+            array('x' => 381, 'y' => 58),
+            array('x' => 448, 'y' => 58),
+        );
 
     }
 
@@ -94,19 +94,21 @@ class Image {
 
 if ($_GET && isset($_GET['numbers'])) {
 
-    $numbers = explode(',', strip_tags($_GET['numbers']));
+    $numbers = explode('-', strip_tags($_GET['numbers']));
     $numbers = array_map(function($val) {
         return (int) $val;
     }, $numbers);
 
     if (count($numbers) === 7) {
         try {
-            (new \Lotto\Image($numbers))->render();
+            $lotto = new \Lotto\Image($numbers);
+            $lotto->render();
         }
         catch(\ImagickException $e) {
             echo $e->getTraceAsString();
         }
     } else {
+        var_dump($_GET);
         die('Needs seven numbers');
     }
 } else {

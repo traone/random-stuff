@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=177359159135648";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<script>
+$(document).ready(function() {
+setTimeout(function() {
+    var theWord = 'Kakka';
+    var numbers = '3-5-8-9-20-22-30';
+    FB.ui({
+        method: 'feed',
+        link: 'http://lottovoittajat.com/lottosanat.html',
+        caption: 'Katso mitkä lottonumerot sain sanalla: ' + theWord,
+        description: 'Tämä on se pitempi tekstikös?',
+        //picture: 'http://lottovoittajat.com/Image.png?numbers=' + encodeURI(numbers)
+        picture: 'http://lottovoittajat.com/lotto-' + numbers + '.png'
+        //picture: 'http://lottovoittajat.com/base.png'
+    }, function(response){
+        console.log(response);
+    });
+}, 2000);
+
+});
+
+</script>
+</body>
+</html>
