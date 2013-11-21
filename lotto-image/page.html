@@ -18,25 +18,33 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<div id="gres" style="display: block;"><h2>asdasdasd</h2><h3>tuotti numerot</h3><div class="ball">1</div><div class="ball">4</div><div class="ball">5</div><div class="ball">6</div><div class="ball">34</div><div class="ball">36</div><div class="ball">39</div><h3>Onnea arvontaan!</h3></div>
+<button id="share">Jaa numerot Facebookissa</button>
+
 
 
 <script>
 $(document).ready(function() {
-setTimeout(function() {
-    var theWord = 'Kakka';
-    var numbers = '3-5-8-9-20-22-30';
-    FB.ui({
-        method: 'feed',
-        link: 'http://lottovoittajat.com/lottosanat.html',
-        caption: 'Katso mitkä lottonumerot sain sanalla: ' + theWord,
-        description: 'Tämä on se pitempi tekstikös?',
-        //picture: 'http://lottovoittajat.com/Image.png?numbers=' + encodeURI(numbers)
-        picture: 'http://lottovoittajat.com/lotto-' + numbers + '.png'
-        //picture: 'http://lottovoittajat.com/base.png'
-    }, function(response){
-        console.log(response);
+    $('#share').bind('click', function() {
+
+        var nums = [];
+        $('.ball').each(function() {
+            nums.push(Number($(this).text()));
+        });
+
+        var numbers = nums.join('-'); // And this too
+        var theWord = 'Tappara';
+
+        FB.ui({
+            method: 'feed',
+            link: 'http://lottovoittajat.com/lottosanat.html',
+            caption: 'Katso mitkä lottonumerot sain sanalla: ' + theWord,
+            description: 'Lottorivi: ' + numbers,
+            picture: 'http://lottovoittajat.com/lotto-' + numbers + '.png'
+        }, function(response){
+            console.log(response);
+        });
     });
-}, 2000);
 
 });
 

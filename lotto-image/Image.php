@@ -79,13 +79,13 @@ class Image {
     private function getGrid()
     {
         return array(
-            array('x' => 51, 'y' => 58),
-            array('x' => 117, 'y' => 58),
-            array('x' => 183, 'y' => 58),
-            array('x' => 250, 'y' => 58),
-            array('x' => 315, 'y' => 58),
-            array('x' => 381, 'y' => 58),
-            array('x' => 448, 'y' => 58),
+            array('x' => 78, 'y' => 47),
+            array('x' => 145, 'y' => 47),
+            array('x' => 211, 'y' => 47),
+            array('x' => 44, 'y' => 119),
+            array('x' => 110, 'y' => 119),
+            array('x' => 177, 'y' => 119),
+            array('x' => 243, 'y' => 119),
         );
 
     }
@@ -108,7 +108,6 @@ if ($_GET && isset($_GET['numbers'])) {
             echo $e->getTraceAsString();
         }
     } else {
-        var_dump($_GET);
         die('Needs seven numbers');
     }
 } else {
