@@ -32,8 +32,8 @@ $(document).ready(function() {
             nums.push(Number($(this).text()));
         });
 
-        var numbers = nums.join('-'); // And this too
-        var theWord = 'Tappara';
+        var numbers = nums.join('-');
+        var theWord = $('#gres > h2').text();
 
         FB.ui({
             method: 'feed',

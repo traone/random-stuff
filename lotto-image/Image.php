@@ -26,11 +26,23 @@ class Image {
     /**
      * @param array $numbers
      */
-    public function __construct( array $numbers )
+    public function __construct( array $numbers, $base_image = false )
     {
         $this->numbers = $numbers;
-        $this->image   = new \Imagick($this->base_image);
+        if ($base_image !== false) {
+            $this->base_image = $base_image;
+        }
+        $this->image = new \Imagick($this->base_image);
         $this->createImageFromNumbers($this->numbers);
+    }
+
+    public function getBaseImage () {
+        return $this->base_image;
+    }
+
+    public function setBaseImage ($base_image) {
+        $this->base_image = $base_image;
+        return $this;
     }
 
     /**
@@ -79,17 +91,15 @@ class Image {
     private function getGrid()
     {
         return array(
-            array('x' => 78, 'y' => 47),
-            array('x' => 145, 'y' => 47),
-            array('x' => 211, 'y' => 47),
-            array('x' => 44, 'y' => 119),
+            array('x' => 75,  'y' => 54),
+            array('x' => 143, 'y' => 54),
+            array('x' => 44,  'y' => 119),
             array('x' => 110, 'y' => 119),
-            array('x' => 177, 'y' => 119),
-            array('x' => 243, 'y' => 119),
+            array('x' => 176, 'y' => 119),
+            array('x' => 75,  'y' => 186),
+            array('x' => 143, 'y' => 186)
         );
-
     }
-
 }
 
 if ($_GET && isset($_GET['numbers'])) {
